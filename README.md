@@ -59,13 +59,8 @@ Run the build command:
 When this command finished, a `dist` folder should appear, which contains the built website.
 
 ### Step 5 - commit and push to GitHub
-You can use GitHub Desktop as usual OR you can try using the command line, the approach preferred by most professionals. Here are the steps:
 
-1. In the VS Code Terminal, run `git add .` . The . is important! This adds all changed files to the commit.
-2. Next, run `git commit -m "type a commit message"`. Change the message to something useful.
-3. Finally, run `git push` to push the code to GitHub. Open your repo in your broser to check that it has worked! If you get a message about setting "origin", try to follow the instructions provided in the message. Ask Abi for help if you're at all unsure.
-
-### Step 6 - publishing with GitHub pages, part 1
+### Step 6 - publishing with GitHub pages
 Enable GitHub Pages on your repo and open the website URL once it's ready. Spoiler alert: it won't work yet, you'll just see these instructions! You'll fix that in the next step.
 
 Here's a reminder of how to enable GitHub Pages.
