@@ -1,6 +1,8 @@
 # Week 9 Practical 1: Vite Tutorial
 Stage 1 of this practical will walk you through the steps of creating, editing, building, and publishing a Vite-built website on GitHub pages. Stage 2 is about using ES6 modules in the context of a Vite-built website.
 
+NOTE: The workflow covered in this practical is a big step up in terms of technical challenge. You are not required to use this approach in your assessment but you may need to if you want to use libraries. If you are confident you don't need to use this approach and it feels too much to tackle right now, you can choose to spend this time working on your assessment or your portfolio instead.
+
 ## Stage 1: Get a Vite project running
 ### Pre-requisite (personal computers only, skip if using an LMB/008 computer!) - install Node
 [Download and install Node.js](https://nodejs.org/en). To verify that it has installed correctly, open up the command line ([Mac](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac) | [Windows](https://www.lifewire.com/how-to-open-command-prompt-2618089) | [Linux](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)) and run:
@@ -60,7 +62,7 @@ When this command finished, a `dist` folder should appear, which contains the bu
 
 ### Step 5 - commit and push to GitHub
 
-### Step 6 - publishing with GitHub pages
+### Step 6 - publishing with GitHub pages, pt 1
 Enable GitHub Pages on your repo and open the website URL once it's ready. Spoiler alert: it won't work yet, you'll just see these instructions! You'll fix that in the next step.
 
 Here's a reminder of how to enable GitHub Pages.
@@ -72,14 +74,14 @@ Here's a reminder of how to enable GitHub Pages.
 You won't see your webpage in GitHub Pages because Vite assumes only the contents of the `dist` folder will be put online and that they are at the root of the website (that would be github.com in this case). To fix this, you need to configure Vite to work with the Pages structure.
 
 1. Create a file called `vite.config.js` at the top level of your project folder. For example, if your folder is called `my-vite-app`, `vite.config.js` should be immediately inside this folder, not the `src` folder.
-2. Copy the code below into `vite.config.js` but replace "YOUR_GITHUB_URL" with the GitHub Pages URL from Step 6 and "YOUR_VITE_PROJECT_FOLDER" with the name of your project folder:
+2. Copy the code below into `vite.config.js` but replace "YOUR_GITHUB_URL" with the GitHub Pages URL from Step 6:
 
 ```
 import { defineConfig } from 'vite';
 
 
 export default defineConfig({
-    base: "YOUR_GITHUB_URL/YOUR_VITE_PROJECT_FOLDER",
+    base: "YOUR_GITHUB_URL",
     build: {
         outDir: '../docs',
         emptyOutDir: true,
@@ -90,4 +92,21 @@ The "base" setting tells Vite where your website will be hosted. The "outDir" se
 
 3. Build your site (`npm run build`) and check the docs folder is created.
 4. Commit and push your changes.
-5. Go back to the GitHub Pages settings in your browser. In the dropdown that says "/root", select "/docs" instead, then click "Save". Wait a few minutes then open the URL that you put as "base" in `vite.config.js`. You should see your site instead of these instructions.
+
+### Step 8 - publishing with GitHub Pages, pt 2
+Now that your Vite project is properly configured, go back to the GitHub Pages settings in your browser. In the dropdown that says "/root", select "/docs" instead, then click "Save". Wait a few minutes then open the URL that you put as "base" in `vite.config.js`. You should see your site instead of these instructions.
+
+### Notes on the command line
+#### Running commands
+Vite commands like `npm run dev` and `npm run build` must **always be run from the folder that contains `package.json`**. 
+
+With the current folder structure, you would have to use the `cd` command (see end of Step 1) to move the VS Code Terminal inside the project folder whenever you open the repo. To avoid this, move the project files out of the folder into the top level of the repo. 
+- After moving the files, set the "outDir" in `vite.config.js` to "docs" instead of "../docs" to reflect it's new position relative to `package.json`.
+
+#### Using Git from the command line
+Now that you've been using the command line to work with Vite, you may like to try using it to work with GitHub too. Most professionals use the terminal rather than GitHub Desktop. Here are the steps:
+1. Run `git add .` to prepare all changed files to be committed. The . is important!
+2. Run `git commit -m "useful message here"` to commit the changes.
+3. Run `git push` to send the commit to the remote repo.
+
+Note: **git commands should always be run from the top level of the repo**. If your terminal is in a nested folder (look at the folder name before the prompt in the terminal), run the command `cd ../` to move one folder up.
