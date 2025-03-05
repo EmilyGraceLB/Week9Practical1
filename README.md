@@ -81,12 +81,12 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     base: "YOUR_GITHUB_URL/YOUR_VITE_PROJECT_FOLDER",
     build: {
-        outDir: 'docs',
+        outDir: '../docs',
         emptyOutDir: true,
     }
 })
 ```
-The "base" setting tells Vite where your website will be hosted. The "outDir" setting tells Vite to put the compiled website into a folder called "docs" instead of the default "dist" folder.
+The "base" setting tells Vite where your website will be hosted. The "outDir" setting tells Vite to put the compiled website into a folder called "docs", which will be created in the top level of the repo instead of the default "dist" folder inside the project folder.
 
 3. Build your site (`npm run build`) and check the docs folder is created.
 4. Commit and push your changes.
