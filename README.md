@@ -1,9 +1,8 @@
 # Week 9 Practical 1: Vite Tutorial
-Stage 1 of this practical will walk you through the steps of creating, editing, building, and publishing a Vite-built website on GitHub pages. Stage 2 is about using ES6 modules in the context of a Vite-built website.
+This practical will walk you through the steps of creating, editing, building, and publishing a Vite-built website on GitHub pages.
 
-NOTE: The workflow covered in this practical is a big step up in terms of technical challenge. You are not required to use this approach in your assessment but you may need to if you want to use libraries. If you are confident you don't need to use this approach and it feels too much to tackle right now, you can choose to spend this time working on your assessment or your portfolio instead.
+NOTE: You are not required to use this approach in your assessment but you may need to if you want to use libraries. If you are confident you don't need to use this approach and it feels like too much to tackle right now, you can choose to spend this time working on your assessment or your portfolio instead.
 
-## Stage 1: Get a Vite project running
 ### Pre-requisite (personal computers only, skip if using an LMB/008 computer!) - install Node
 [Download and install Node.js](https://nodejs.org/en). To verify that it has installed correctly, open up the command line ([Mac](https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac) | [Windows](https://www.lifewire.com/how-to-open-command-prompt-2618089) | [Linux](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)) and run:
 
@@ -19,13 +18,13 @@ Decide what you will call your project folder (remember, folder names cannot con
 
 If you are asked if you should install something, enter `y`.
 
-When installation is complete, you will see a message that gives you three commands to run. Follow these instructions and run each command in the VS Code terminal. Wait for each command to finish running before entering the next command. 
+When installation is complete, you will see a message that gives you three commands to run. Run each command in the VS Code terminal. Wait for each command to finish running before entering the next command. 
 
 If all goes well, you will get output that includes a "local" server URL, likely `http://localhost:5173`. Copy the URL shown in your terminal and open it in Chrome.
 
 Explanation of the commands:
 - `cd my-vite-app` The "cd" command changes the working folder of the terminal. In this case it moves the terminal inside the folder created when the Vite project was created.
-- `npm install` This command installs a suite of dependencies needed to run a Vite project. Look inside your app folder and you should see, among other things, a folder called `node-modules`. This folder contains all the installed dependencies. Do not edit or move it!
+- `npm install` This command installs dependencies (libraries, packages) needed to run a Vite project. Look inside your app folder and you should see, among other things, a folder called `node-modules`. This folder contains all the installed dependencies. Do not edit or move it!
 - `npm run dev` This command starts the Vite development server so you can view your website in your browser as you work on it.
 
 ### Step 2 - explore the files created in the previous step
@@ -39,7 +38,7 @@ Open the newly created project folder in VS Code and take a few minutes to inves
 - `package.json` is the editable version of `package-lock.json`. We will come back to this file in future! For now, you can ignore it.
 
 ### Step 3 - remove unnecessary template code
-The most important file in the project is main.js inside the src folder.
+Open main.js, inside the src folder. This file is linked in index.html and runs when the site first loads.
 
 When you're happy you understand how the existing code in this file works, modify it so that it displays a paragraph that says "Hello, World!". There should be no other content!
 
@@ -50,15 +49,15 @@ Remove any code that is no longer being used, including import statements. You s
 
 Delete all code in style.css and add a few styles of your choosing e.g. set the background colour and font family.
 
-### Step 4 - build your code
-Next, you're going to build your code so that it can be published on GitHub pages
+### Step 4 - build the code
+Next, you're going to build the code so that it can be published on GitHub pages
 
 In the VS Code terminal, stop the development server by typing `CTRL C`.
 
 Run the build command:
 ```npm run build```
 
-When this command finished, a `dist` folder should appear, which contains the built website.
+When this command finishes, a `dist` folder should appear, which contains the compiled website.
 
 ### Step 5 - commit and push to GitHub
 
@@ -67,8 +66,8 @@ Enable GitHub Pages on your repo and open the website URL once it's ready. Spoil
 
 Here's a reminder of how to enable GitHub Pages.
 1. Open your repo in your browser if you haven't already done so. Use GitHub Desktop or login to github.com and find it in the repositories area of your account.
-2. Go to the Settings tab and check that your repo visibility is public—scroll all the way down to Danger Zone. Repo visibility is the first setting.
-3. In the left menu, go to Pages. In the "branch" dropdown, select "main". Click Save. Refresh the page in a minute or two to get the URL.
+2. Go to the Settings tab and check that your repo visibility is public: scroll all the way down to Danger Zone, repo visibility is the first setting.
+3. In the left menu, go to Pages. In the "branch" dropdown, select "main". Click Save. Refresh the page in a minute or two to get the URL. Tip: go to the Actions tab in the GitHub repo to see the status of the build. It will turn green when it's ready.
 
 ### Step 7 - configuring Vite to work with GitHub pages
 You won't see your webpage in GitHub Pages because Vite assumes only the contents of the `dist` folder will be put online and that they are at the root of the website (that would be github.com in this case). To fix this, you need to configure Vite to work with the Pages structure.
@@ -102,6 +101,12 @@ Vite commands like `npm run dev` and `npm run build` must **always be run from t
 
 With the current folder structure, you would have to use the `cd` command (see end of Step 1) to move the VS Code Terminal inside the project folder whenever you open the repo. To avoid this, move the project files out of the folder into the top level of the repo. 
 - After moving the files, set the "outDir" in `vite.config.js` to "docs" instead of "../docs" to reflect it's new position relative to `package.json`.
+
+#### Cloning an existing repo that uses a build tool onto another computer
+Dependencies (i.e. `node_modules`) need to be installed before running the code.
+1. Open the VS Code Terminal
+2. Check the name of the folder that precedes the prompt in the terminal. It should match the folder that contains `package.json`. If the terminal is not in the right place, use the `cd` command to move. `cd folder_name` moves into a folder of the same name, `cd ../` moves up one folder.
+3. Run `npm install`. This will install all dependencies listed under "dependencies" or "devDependencies" in `package.json`.
 
 #### Using Git from the command line
 Now that you've been using the command line to work with Vite, you may like to try using it to work with GitHub too. Most professionals use the terminal rather than GitHub Desktop. Here are the steps:
